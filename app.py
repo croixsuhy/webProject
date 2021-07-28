@@ -7,7 +7,7 @@ app = Flask(__name__, template_folder=getcwd())
 @app.route("/")
 def home():
     # Use the html file
-    return render_template("test.html")
+    return "Hello World!"
 
 
 app.run()
