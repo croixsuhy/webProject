@@ -10,4 +10,4 @@ def home():
     return render_template("test.html")
 
 
-app.run(debug=False)
+app.run()
