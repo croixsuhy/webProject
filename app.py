@@ -8,6 +8,3 @@ app = Flask(__name__, template_folder=getcwd())
 def home():
     # Use the html file
     return render_template("test.html")
-
-
-app.run(port=8080)
