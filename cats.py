@@ -20,4 +20,4 @@ def numOfCats(cats):
         elif int(cats) > 5:
             return f"You have {cats} cats! That's alot!"
     except RuntimeError:
-        print("Can not run")
+        return "Can not run (our cats are having issues running the site...)"
