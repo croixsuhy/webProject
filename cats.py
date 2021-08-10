@@ -3,11 +3,13 @@ from os import getcwd
 # Get the location of the template
 app = Flask(__name__, template_folder=getcwd())
 
+
 # Main page
 @app.route("/")
 def home():
     # Returns string like HTML line
     return "<b>Enter how many cats you own in the search bar!</b>"
+
 
 # /<cats> makes it so you can use an input in the search bar
 @app.route("/<cats>")
