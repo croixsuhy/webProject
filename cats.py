@@ -3,16 +3,18 @@ from os import getcwd
 # Get the location of the template
 app = Flask(__name__, template_folder=getcwd())
 
+# Main page
+@app.route("/")
+def home():
+    return "<title>Enter how many cats you own in the search bar!</title>"
 
 # /<cats> makes it so you can use an input in the search bar
 @app.route("/<cats>")
 def numOfCats(cats):
     try:
         try:
-            if int(cats) == None:
-                return "<title>Enter a number in the search bar!</title>"
             # Changes cats variable to an int
-            elif int(cats) == 0:
+            if int(cats) == 0:
                 return "You have no cats... how sad..."
             elif int(cats) == 1:
                 return "You have a cat! Go get some more!"
