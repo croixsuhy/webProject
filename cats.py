@@ -9,6 +9,8 @@ def numOfCats(cats):
     try:
         if int(cats) == 0:
             return "You have no cats... how sad..."
+        elif int(cats) == 1:
+            return "You have 1 cat!"
         elif int(cats) < 5:
             return f"You have {cats} cats!"
         elif int(cats) > 5:
