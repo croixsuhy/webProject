@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Rampart+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Besley:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+
+/* Create background of HTML page */
+body {
+    background-image: url('tiles.jpg');
+}
+
+
+/* Controls things in HTML, like headers, paragraphs, etc
+   You can change the fonts, colors, and a ton more in CSS */
+h1 {
+    font-family: 'Rampart One', cursive;
+    background-color: #dfbe96;
+    color: #3c6994;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+h2 {
+    font-family: 'Besley', sans-serif;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+
+
+h3 {
+    font-family: 'Lobster', cursive;
+    font-size: 15px;
+    text-align: left;
+    color: black;
+}
+
+
+p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    color: blue;
+}
