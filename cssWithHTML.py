@@ -8,7 +8,3 @@ app = Flask(__name__, template_folder=getcwd())
 @app.route("/")
 def home():
     return render_template("cssTest.html")
-
-
-# Temp
-app.run()
