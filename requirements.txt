@@ -1,2 +1,4 @@
 Flask==2.0.1
+firebase_admin==5.0.2
+cryptography==3.4.8
 gunicorn

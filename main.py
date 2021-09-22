@@ -1,4 +1,6 @@
-from encryptionWebProject import app  # Make sure to change import when using new python code
+from encryption_html import app
+
+
 
 if __name__ == "__main__":
     app.run()
