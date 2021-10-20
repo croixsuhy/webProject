@@ -15,4 +15,4 @@ def encrypt(raw):
     key = Fer.generate_key()
     f = Fer(key)
 
-
+    return f.decrypt(raw)
