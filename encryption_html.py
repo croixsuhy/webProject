@@ -20,4 +20,7 @@ def encrypt(raw):
 
     encryptedString = f.encrypt(raw)
 
-    return str(encryptedString)
+    decryptedString = f.decrypt(encryptedString)
+
+    return str(f"""Encrypted string: {encryptedString}
+                Decrypted string: {decryptedString}""")
