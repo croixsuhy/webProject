@@ -14,6 +14,7 @@ def home():
 
 @app.route("/<raw>")
 def encrypt(raw):
+    raw = raw.encode()
     key = Fer.generate_key()
     f = Fer(key)
 
