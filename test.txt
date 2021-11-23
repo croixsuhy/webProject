@@ -1,0 +1,20 @@
+Idea
+
+
+
+input:
+
+
+Hello World
+Hello
+How are you
+
+----------------------------
+
+output:
+
+
+Key = "gfdshgsdh"
+GAKJDHG
+skjgh
+AJGH

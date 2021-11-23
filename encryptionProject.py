@@ -7,10 +7,15 @@ app = Flask(__name__, template_folder=os.getcwd())
 
 
 @app.route("/")
-def home():
+def homepage():
+    return render_template("homepage.html")
+
+
+@app.route("/textEncrypt")
+def textEncrypt():
     # return "<b>Enter something to encrypt!</b>"
 
-    return render_template("encryptionProject.html")
+    return render_template("textEncryption.html")
 
 
 # Route back to the previous page to get the data
@@ -40,7 +45,8 @@ def encrypt():
                 decryptedString = f.decrypt(encryptedString)
 
                 # Render template with variable in it
-                return render_template("encryptionProjectDisplay.html", encrypted=str(encryptedString),
+                # THE HTML IS TEMPORARY we will put it on the same page
+                return render_template("textEncryptionDisplayTEMP.html", encrypted=str(encryptedString),
                                        decrypted=str(decryptedString))
 
     except RuntimeError:
@@ -52,6 +58,6 @@ def encrypt():
 
 
 # TEMP (DELETE/COMMENT AFTERWARDS!!!!!!!)
-# if __name__ == "__main__":
-#     app.debug = True
-#     app.run()
+if __name__ == "__main__":
+    app.debug = True
+    app.run()

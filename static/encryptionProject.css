@@ -1,5 +1,3 @@
-/* COPY EVERYTHING FROM STYLE AT THE END */
-
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 body {
@@ -8,4 +6,23 @@ background-color: #67797f;
 
 p {
 font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+font-family: 'Source Sans Pro', sans-serif;
+font-size: 45px;
+}
+
+a:link {
+color: #032426;
+}
+
+a:visited {
+color: #032426;
+}
+
+h1 {
+font-family: 'Source Sans Pro', sans-serif;
+color: #032426;
+font-size: 60px;
 }
