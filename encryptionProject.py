@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, abort
 import os
 from cryptography.fernet import Fernet as Fer
 
@@ -11,6 +11,8 @@ def homepage():
     return render_template("homepage.html")
 
 
+"""----------------- Text Encrypting -------------------"""
+
 @app.route("/textEncrypt")
 def textEncrypt():
     # return "<b>Enter something to encrypt!</b>"
@@ -19,19 +21,14 @@ def textEncrypt():
 
 
 # Route back to the previous page to get the data
-@app.route("/home", methods=["POST", "GET"])
-def encrypt():
-
+@app.route("/home", methods=["GET"])
+def textEncrypting():
     try:
-        # Flask will return this if there is nothing to work with
-        if request.method == "POST":
-            return "Make sure to enter something to encrypt!!"
-
-        elif request.method == "GET":
+        if request.method == "GET":
             # Get data from HTML file
             raw = request.args.get("rawData")
 
-            # Check to see if there is no data, else we pass it through
+            # Safety net if the program gets nothing (meaning None, not an empty string)
             if raw is None:
                 return "There is no data!"
 
@@ -47,17 +44,37 @@ def encrypt():
                 # Render template with variable in it
                 # THE HTML IS TEMPORARY we will put it on the same page
                 return render_template("textEncryptionDisplayTEMP.html", encrypted=str(encryptedString),
-                                       decrypted=str(decryptedString))
+                                       decrypted=str(decryptedString), key=str(key))
 
     except RuntimeError:
-        print("Cannot open HTML file, encrypt, or do anything")
+        # Return a 404 Not Found error
+        abort(404)
 
-    # # Temp
-    # return str(f"""Encrypted string: {encryptedString}
-    #             Decrypted string: {decryptedString}""")
+
+"""--------------------------------------------------"""
+
+"""----------------- File Encrypting ----------------"""
+
+
+@app.route("/fileEncrypt")
+def fileEncrypt():
+    return render_template("fileEncryption.html")
+
+
+@app.route("/fileEncrypt", methods=["POST"])
+def fileEncryption():
+    if request.method == "POST":
+        try:
+            rawFile = request.files["rawFile"]
+
+            if rawFile.filename == "":
+                return "There is no data!"
+
+        except RuntimeError:
+            # Return a 404 Not Found error
+            abort(404)
 
 
 # TEMP (DELETE/COMMENT AFTERWARDS!!!!!!!)
 if __name__ == "__main__":
-    app.debug = True
-    app.run()
+    app.run(debug=True)

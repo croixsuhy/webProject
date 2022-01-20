@@ -1,20 +1,6 @@
-Idea
-
-
-
-input:
-
-
-Hello World
-Hello
-How are you
-
-----------------------------
-
-output:
-
-
-Key = "gfdshgsdh"
-GAKJDHG
-skjgh
-AJGH
+key = "hello"
+Hello, World!
+ABC123
+This is important!
+Dogs
+Cats

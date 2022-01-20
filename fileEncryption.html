@@ -3,8 +3,11 @@
 <html lang="en">
 
     <head>
+
+<!--        &lt;!&ndash; WILL USE LATER (Or will we?) &ndash;&gt;-->
 <!--         <link rel="stylesheet" href="{{ url_for('static', filename='encryptionProject.css') }}">-->
 <!--         <link rel="stylesheet" href="encryptionProject.css">-->
+
 
         <meta charset="UTF-8">
         <title>Data Encryption</title>
@@ -12,11 +15,15 @@
     </head>
 
     <body>
+        <form action="home">
+            <p>Put in a file to encrypt data (must be a text file)</p>
 
-        <!-- Variables to display from Flask -->
-        <h2>Key: {{ key }}</h2>
-        <h2>Encrypted Text: {{ encrypted }}</h2>
-        <h2>Text: {{ decrypted }}</h2>
+            <label for="rawFile">Insert raw file</label>
+            <input type="file" id="rawFile" name="rawFile">
+
+            <p>It will return a .txt file with your data encrypted</p>
+
+        </form>
 
     </body>
 
@@ -51,12 +58,6 @@
     font-family: 'Source Sans Pro', sans-serif;
     color: #032426;
     font-size: 60px;
-    }
-
-    h2 {
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #032426;
-    font-size: 50px;
     }
 
 </style>
