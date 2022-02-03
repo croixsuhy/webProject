@@ -67,8 +67,10 @@ try:
 
                 f = Fer(key)
 
-                print(f.encrypt(word))
+                encryptedText.append(f.encrypt(word))
 
+    print(key)
+    print(encryptedText)
 
 
 except RuntimeError:

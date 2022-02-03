@@ -21,10 +21,10 @@ def textEncrypt():
 
 
 # Route back to the previous page to get the data
-@app.route("/home", methods=["GET"])
+@app.route("/home", methods=["GET", "POST"])
 def textEncrypting():
     try:
-        if request.method == "GET":
+        if request.method == "POST":
             # Get data from HTML file
             raw = request.args.get("rawData")
 
