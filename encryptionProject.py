@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, abort
 import os
 from cryptography.fernet import Fernet as Fer
+from werkzeug.utils import secure_filename
 
 # Intialize app
 app = Flask(__name__, template_folder=os.getcwd())
@@ -24,7 +25,7 @@ def textEncrypt():
 @app.route("/home", methods=["GET", "POST"])
 def textEncrypting():
     try:
-        if request.method == "POST":
+        if request.method == "GET":
             # Get data from HTML file
             raw = request.args.get("rawData")
 
@@ -66,6 +67,7 @@ def fileEncryption():
     if request.method == "POST":
         try:
             rawFile = request.files["rawFile"]
+            rawFile.save(secure_filename(rawFile.filename))
 
             if rawFile.filename == "":
                 return "There is no data!"

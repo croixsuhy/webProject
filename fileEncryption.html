@@ -18,11 +18,15 @@
         <form action="home">
             <p>Put in a file to encrypt data (must be a text file)</p>
 
-            <label for="rawFile">Insert raw file</label>
-            <input type="file" id="rawFile" name="rawFile">
-            <input type="submit">
+            <!-- localhost is temp -->
+            <form action="http://localhost:5000/uploader" method="POST" enctype="multipart/form-data">
+                <label for="rawFile">Insert text file</label>
+                <input type="file" accept=".txt" id="rawFile" name="rawFile">
+                <input type="submit">
+            </form>
 
             <p>It will return a .txt file with your data encrypted</p>
+
 
         </form>
 

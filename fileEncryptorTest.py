@@ -72,6 +72,15 @@ try:
     print(key)
     print(encryptedText)
 
+    # # TEMP \/ \/ \/ \/ \/
+    #
+    # decryptedList = []
+    #
+    # for eTxt in encryptedText:
+    #     f = Fer(key)
+    #     decryptedList.append(f.decrypt(eTxt))
+    #
+    # print(decryptedList)
 
 except RuntimeError:
     print("Can't do anything")  # Used as a safety net

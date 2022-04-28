@@ -11,10 +11,10 @@ enList = [b'gAAAAABiO6MLiIFBsg7qq12QIndbG9G4PZyzbBFyyooyj0520cpqNAKG2KlqrqVEdXAY
 decryptedList = []
 
 # for eTxt in enList:
-#     # f = Fer(key)
-#     # decryptedList.append(f.decrypt(eTxt))
+#     f = Fer(key)
+#     decryptedList.append(f.decrypt(eTxt))
 #
-# # print(decryptedList)
+# print(decryptedList)
 
 f = Fer(key)
 print(f.decrypt(b'gAAAAABiO6MLiIFBsg7qq12QIndbG9G4PZyzbBFyyooyj0520cpqNAKG2KlqrqVEdXAYgKXT_0b17-VagsfZDIAEoda8CbyEVQ=='))
