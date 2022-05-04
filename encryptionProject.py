@@ -67,9 +67,12 @@ def fileEncryption():
     if request.method == "POST":
         try:
             rawFile = request.files["rawFile"]
-            rawFile.save(secure_filename(rawFile.filename))
 
-            if rawFile.filename == "":
+            if rawFile.filename != "":
+                rawFile.save(secure_filename(rawFile.filename))
+                return rawFile.filename
+
+            else:
                 return "There is no data!"
 
         except RuntimeError:
