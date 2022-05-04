@@ -68,12 +68,14 @@ def fileEncryption():
         try:
             rawFile = request.files["rawFile"]
 
-            if rawFile.filename != "":
-                rawFile.save(secure_filename(rawFile.filename))
-                return rawFile.filename
+            # print(rawFile.filename, request.files)
 
-            else:
-                return "There is no data!"
+            # if rawFile.filename != "":
+            rawFile.save(secure_filename(rawFile.filename))
+            return rawFile.filename
+
+            # else:
+            #     return "There is no data!"
 
         except RuntimeError:
             # Return a 404 Not Found error
