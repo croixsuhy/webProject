@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, abort
+from flask import Flask, render_template, request, redirect, url_for, abort, send_file
 import os
 from cryptography.fernet import Fernet as Fer
 from werkzeug.utils import secure_filename
@@ -13,6 +13,7 @@ def homepage():
 
 
 """----------------- Text Encrypting -------------------"""
+
 
 @app.route("/textEncrypt")
 def textEncrypt():
@@ -66,16 +67,39 @@ def fileEncrypt():
 def fileEncryption():
     if request.method == "POST":
         try:
-            rawFile = request.files["rawFile"]
+            # Request for file to encrypt
+            # .read() allows us to get the bytes-content out of the file
+            rawFile = request.files["rawFile"].read()
 
-            # print(rawFile.filename, request.files)
+            # Split text characters
+            rawTxt = rawFile.split(b"\r\n")
 
-            # if rawFile.filename != "":
-            rawFile.save(secure_filename(rawFile.filename))
-            return rawFile.filename
+            # Create a random key that will be used
+            encTxt = []
+            randomKey = Fer.generate_key()
+            f = Fer(randomKey)
 
-            # else:
-            #     return "There is no data!"
+            # Encrypt items in list and append to the encrypted text list
+            for rawLine in rawTxt:
+                encTxt.append(f.encrypt(rawLine))
+
+            # Create/open a text file and dump encrypted content and key into file
+            if not os.path.exists(".\\encryptedText.txt"):
+                with open("encryptedText.txt", "x") as encryptedFile:
+                    encryptedFile.write(f"Key: {randomKey}\n\r")
+                    encryptedFile.write("Data:\n\r~")
+                    for encLine in encTxt:
+                        encryptedFile.write(f"{encLine}\r")
+
+            else:
+                with open("encryptedText.txt", "w") as encryptedFile:
+                    encryptedFile.write(f"Key: {randomKey.decode()}\n\r")
+                    encryptedFile.write("Data:\n\r")
+                    for encLine in encTxt:
+                        encryptedFile.write(f"{encLine.decode()}\r")
+
+            # Send the file and make the user download it
+            return send_file(".\\encryptedText.txt", download_name="encryptedText.txt", as_attachment=True)
 
         except RuntimeError:
             # Return a 404 Not Found error
