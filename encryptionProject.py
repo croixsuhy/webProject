@@ -83,20 +83,24 @@ def fileEncryption():
             for rawLine in rawTxt:
                 encTxt.append(f.encrypt(rawLine))
 
-            # Create/open a text file and dump encrypted content and key into file
-            if not os.path.exists(".\\encryptedText.txt"):
-                with open("encryptedText.txt", "x") as encryptedFile:
-                    encryptedFile.write(f"Key: {randomKey}\n\r")
-                    encryptedFile.write("Data:\n\r~")
-                    for encLine in encTxt:
-                        encryptedFile.write(f"{encLine}\r")
-
-            else:
-                with open("encryptedText.txt", "w") as encryptedFile:
+            # Function to dump data
+            def dumpEncContent():
+                try:
                     encryptedFile.write(f"Key: {randomKey.decode()}\n\r")
                     encryptedFile.write("Data:\n\r")
                     for encLine in encTxt:
                         encryptedFile.write(f"{encLine.decode()}\r")
+
+                except RuntimeError:
+                    print("encryptedFile or randomKey not generated")
+
+            # Create/open a text file and dump encrypted content and key into file
+            if not os.path.exists(".\\encryptedText.txt"):
+                with open("encryptedText.txt", "x") as encryptedFile:
+                    dumpEncContent()
+            else:
+                with open("encryptedText.txt", "w") as encryptedFile:
+                    dumpEncContent()
 
             # Send the file and make the user download it
             return send_file(".\\encryptedText.txt", download_name="encryptedText.txt", as_attachment=True)
